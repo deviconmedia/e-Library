@@ -12,10 +12,10 @@
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('daftar-buku')) ? 'active' : '' }}">
             <a href="{{ route('web.daftar-buku') }}" class="nav-link">Daftar Buku</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ (request()->is('tentang')) ? 'active' : '' }}">
             <a href="{{ route('web.tentang') }}" class="nav-link">Tentang Perpustakaan</a>
           </li>
         </ul>

@@ -56,3 +56,4 @@ Route::delete('member/destroy', [MemberController::class, 'destroyMemberById'])-
 
 //Borrower Routes
 Route::get('borrowers', [BorrowerController::class, 'index'])->name('borrower.index');
+Route::post('new-borrower', [BorrowerController::class, 'newBorrower'])->name('borrower.new');

@@ -58,7 +58,7 @@
                 </a>
               </li>
             </ul>
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('borrowers')) ? 'bg-info' : '' }}">
               <a href="{{ route('borrower.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-clock"></i>
                 <p>
@@ -66,7 +66,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('members')) ? 'bg-info' : '' }}">
               <a href="{{ route('member.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>

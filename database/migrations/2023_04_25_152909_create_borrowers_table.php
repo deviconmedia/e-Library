@@ -20,6 +20,7 @@ class CreateBorrowersTable extends Migration
             $table->date('borrow_date');
             $table->date('date_return');
             $table->string('return_status')->default('Diterima');
+            $table->string('information');
             $table->timestamps();
         });
     }
