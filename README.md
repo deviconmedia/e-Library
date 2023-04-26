@@ -1,4 +1,4 @@
-<p align="center"><a href="https://iconmedia.co.id" target="_blank"><img src="https://iconmedia.co.id/uploads/logo.png" width="400"></a></p>
+<p align="center"><a href="https://iconmedia.co.id" target="_blank"><img src="http://iconmedia.co.id/uploads/logo.png" width="400"></a></p>
 
 ## Tentang e-Library
 
