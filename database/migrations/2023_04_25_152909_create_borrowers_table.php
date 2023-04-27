@@ -19,7 +19,7 @@ class CreateBorrowersTable extends Migration
             $table->integer('book_qty');
             $table->date('borrow_date');
             $table->date('date_return');
-            $table->string('return_status')->default('Diterima');
+            $table->string('return_status')->default('Belum Dikembalikan');
             $table->string('information');
             $table->timestamps();
         });

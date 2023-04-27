@@ -12,7 +12,9 @@ class BorrowerController extends Controller
     public function index(){
         $members = Member::all();
         $books = Book::all();
-        return view('adminpanel.borrower.index', compact('members', 'books'));
+        $borrowers = Borrower::all();
+        $data2 = Borrower::where('return_status', 'Belum Dikembalikan')->get();
+        return view('adminpanel.borrower.index', compact('members', 'books', 'borrowers', 'data2'));
     }
     //Add new Borrower
     public function newBorrower(Request $request){
@@ -29,4 +31,13 @@ class BorrowerController extends Controller
 
         return redirect()->route('borrower.index')->with('success', 'Added!');
     }
+
+    public function changeStatusBorrower(Request $request){
+        $b = Borrower::find($request->borrowerId);
+        $b->date_return = now();
+        $b->return_status = 'Dikembalikan';
+        $b->update();
+        return redirect()->route('borrower.index')->with('success', 'Updated!');
+    }
+
 }

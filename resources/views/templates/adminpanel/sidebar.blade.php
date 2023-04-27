@@ -30,8 +30,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('book') || (request()->is('book/categories')) ? 'menu-open' : '') }}">
-            <a href="#" class="nav-link {{ (request()->is('book') || (request()->is('book/categories')) ? 'bg-info' : '') }}">
+          <li class="nav-item {{ (request()->is('book') || (request()->is('book/categories')) || (request()->is('book/publishers')) ? 'menu-open' : '') }}">
+            <a href="#" class="nav-link {{ (request()->is('book') || (request()->is('book/categories')) || (request()->is('book/publishers')) ? 'bg-info' : '') }}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Katalog Buku
@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('book.publishers') }}" class="nav-link">
+                <a href="{{ route('book.publishers') }}" class="nav-link {{ (request()->is('book/publishers')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penerbit</p>
                 </a>
@@ -74,8 +74,8 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="../widgets.html" class="nav-link">
+            <li class="nav-item {{ (request()->is('user-management')) || (request()->is('user-management/new-user')) ? 'bg-info' : '' }}">
+              <a href="{{ route('user-management.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>
                 <p>
                   Manajemen User

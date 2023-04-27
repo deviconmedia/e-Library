@@ -57,3 +57,12 @@ Route::delete('member/destroy', [MemberController::class, 'destroyMemberById'])-
 //Borrower Routes
 Route::get('borrowers', [BorrowerController::class, 'index'])->name('borrower.index');
 Route::post('new-borrower', [BorrowerController::class, 'newBorrower'])->name('borrower.new');
+Route::put('status-borrower', [BorrowerController::class, 'changeStatusBorrower'])->name('borrower.change-status');
+
+//User Management
+Route::get('user-management', [UserController::class, 'index'])->name('user-management.index');
+Route::get('user-management/new-user', [UserController::class, 'newUser'])->name('user-management.new');
+Route::post('user-management/new-user', [UserController::class, 'newUserStore'])->name('user-management.store');
+Route::put('user-management/status-change', [UserController::class, 'changeUserStatus'])->name('user-management.status-change');
+Route::put('user-management/pass-change', [UserController::class, 'passUserChange'])->name('user-management.pass-change');
+Route::delete('user-management/delete', [UserController::class, 'deleteUser'])->name('user-management.delete');

@@ -41,7 +41,7 @@
                             <td>{{ $b->stock }}</td>
                             <td>{{ date('d/m/Y, H:i:s', strtotime($b->created_at)) }}</td>
                         </tr>
-                        
+
                     @endforeach
                 </tbody>
             </table>
