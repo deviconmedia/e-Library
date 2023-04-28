@@ -54,8 +54,7 @@ Route::put('/book/publishers', [BookController::class, 'updatePublishers'])->nam
 Route::get('members', [MemberController::class, 'index'])->name('member.index')->middleware('auth');
 Route::post('members', [MemberController::class, 'newMember'])->name('member.store');
 Route::put('member/update', [MemberController::class, 'updateMemberById'])->name('member.update-by-id');
-Route::put('member/controls', [MemberController::class, 'memberControls'])->name('member.controls');
-Route::delete('member/destroy', [MemberController::class, 'destroyMemberById'])->name('member.destroy-by-id');
+Route::get('member/controls/{id}', [MemberController::class, 'memberControls'])->name('member.controls');
 
 //Borrower Routes
 Route::get('borrowers', [BorrowerController::class, 'index'])->name('borrower.index')->middleware('auth');
@@ -70,5 +69,5 @@ Route::put('user-management/status-change', [UserController::class, 'changeUserS
 Route::put('user-management/pass-change', [UserController::class, 'passUserChange'])->name('user-management.pass-change');
 Route::delete('user-management/delete', [UserController::class, 'deleteUser'])->name('user-management.delete');
 
-// History routes 
+// History routes
 Route::get('histories', [HistoryController::class, 'index'])->name('my-histories');

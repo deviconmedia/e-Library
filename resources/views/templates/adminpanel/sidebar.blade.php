@@ -90,14 +90,16 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item {{ (request()->is('histories')) ? 'bg-info' : '' }}">
-              <a href="{{ route('my-histories') }}" class="nav-link">
-                <i class="nav-icon fas fa-history"></i>
-                <p>
-                  Riwayat Peminjaman
-                </p>
-              </a>
-            </li>
+            @if(Auth()->user()->level == 'Member')
+                <li class="nav-item {{ (request()->is('histories')) ? 'bg-info' : '' }}">
+                  <a href="{{ route('my-histories') }}" class="nav-link">
+                    <i class="nav-icon fas fa-history"></i>
+                    <p>
+                      Riwayat Peminjaman
+                    </p>
+                  </a>
+                </li>
+                @endif
           </li>
       </nav>
       <!-- /.sidebar-menu -->

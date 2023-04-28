@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Member;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -33,6 +34,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'efron@iconmedia.co.id',
             'password' => bcrypt('123'),
             'level' => 'Member',
+            'status' => 'active'
+        ]);
+
+        //Seeding for Members
+        Member::create([
+            'email' => 'efron@iconmedia.co.id',
+            'name' => 'Efron Paduansi',
+            'pass' => bcrypt('123'),
             'status' => 'active'
         ]);
     }

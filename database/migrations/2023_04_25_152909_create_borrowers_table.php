@@ -20,7 +20,7 @@ class CreateBorrowersTable extends Migration
             $table->date('borrow_date');
             $table->date('date_return');
             $table->string('return_status')->default('Belum Dikembalikan');
-            $table->string('information');
+            $table->string('information')->nullable();
             $table->timestamps();
         });
     }

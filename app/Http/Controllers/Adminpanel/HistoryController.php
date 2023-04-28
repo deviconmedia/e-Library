@@ -11,12 +11,12 @@ class HistoryController extends Controller
 {
     //Get my histories
     public function index(){
-        $member = Member::where('email', auth()->user()->email)->get();
-        if ($member[0]['id'] == null){
+        $member = Member::where('email', auth()->user()->email)->first();
+        if ($member['id'] == null){
             return view('memberpanel.my_history');
             die();
         }else{
-            $bData = Borrower::where('member_id', $member[0]['id'])->get();
+            $bData = Borrower::where('member_id', $member['id'])->get();
             return view('memberpanel.my_history', compact('bData'));
         }
     }

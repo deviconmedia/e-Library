@@ -42,29 +42,24 @@ class MemberController extends Controller
         return redirect()->route('member.index')->with('success', 'Updated!');
     }
     //Enable or Disable a member
-    public function memberControls(Request $request){
-        $member = Member::find($request->memberId);
-        $user      = User::where('email', $request->memberEmail)->get();
+    public function memberControls($memberId){
+        $member = Member::find($memberId);
+        $u = User::where('email', $member['email'])->get();
         if($member->status === 'active'){
             $member->status = 'inactive';
-            if($user[0]['status'] == 'active'){
-                $user[0]['status'] = 'inactive';
-                $user[0]->update();
-            }
+           if($u[0]['status'] === 'active'){
+               $u[0]['status'] = 'inactive';
+               $u[0]->update();
+           }
         }else{
             $member->status = 'active';
-            if($user[0]['status'] == 'inactive'){
-                $user[0]['status'] = 'active';
-                $user[0]->update();
+            if($u[0]['status'] === 'inactive'){
+                $u[0]['status'] = 'active';
+                $u[0]->update();
             }
         }
         $member->update();
         return redirect()->route('member.index')->with('success', 'Updated!');
     }
-    //Destory (Delete) a member by id
-    public function destroyMemberById(Request $request){
-        $member = Member::find($request->memberId);
-        $member->delete();
-        return redirect()->route('member.index')->with('success', 'Deleted!');
-    }
+
 }

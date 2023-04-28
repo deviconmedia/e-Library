@@ -39,63 +39,15 @@
 
                             </td>
                             <td class="d-flex">
-{{--                                Enable or Disable member--}}
-                                <form action="{{ route('member.controls') }}" method="post">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="memberEmail" value="{{ $member->email }}">
-                                    <input type="hidden" name="memberId" value="{{ $member->id }}">
-                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Aktif/Nonaktifkan member" onclick="return confirm('Anda yakin?')"><i class="fas fa-info-circle"></i></button>
-                                </form>
-{{--                                Edit button--}}
-                                <button type="button" class="btn btn-sm btn-warning mx-2" data-toggle="modal" data-target="#editModal{{ $member->id }}">
-                                    <i class="fas fa-pen"></i>
-                                </button>
-                                <!-- Edit Modal -->
-                                <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Ubah Data Member #{{ $member->id }}</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('member.update-by-id') }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="memberId" value="{{ $member->id }}">
-                                                    <div class="form-group row">
-                                                        <label for="etEmail"  class="col-sm-2 col-form-label">Email</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="email" name="etEmail" id="etEmail" class="form-control" value="{{ $member->email }}" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="etName" class="col-sm-2 col-form-label">Nama</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" name="etName" id="etName" class="form-control" value="{{ $member->name }}" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Update</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                Other Actions--}}
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-history"></i> History</a>
+                                    <a class="dropdown-item" href="{{ route('member.controls', $member->id) }}" onclick="return confirm('Anda yakin?')"><i class="fas fa-info-circle"></i> Disable/Enable</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-pen text-warning"></i> Edit</a>
                                 </div>
-{{--                                Form for destroy--}}
-                                <form action="{{ route('member.destroy-by-id') }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="memberId" value="{{ $member->id }}">
-                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus member" onclick="return confirm('Anda yakin menghapus member ini?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
                             </td>
                         </tr>
                     @endforeach
