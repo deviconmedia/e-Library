@@ -86,7 +86,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="userId" value="{{ $user->id }}">
-                                    <button type="submit" class="btn btn-sm btn-danger mx-2" data-toggle="tooltip" data-placement="bottom" title="Hapus User"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" class="btn btn-sm btn-danger mx-2" data-toggle="tooltip" data-placement="bottom" title="Hapus User" onclick="return confirm('Anda yakin menghapus pengguna ini?')"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

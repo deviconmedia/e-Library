@@ -100,7 +100,7 @@
 <script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Select2 -->

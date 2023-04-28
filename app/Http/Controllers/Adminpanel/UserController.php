@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     //User Management
     public function index(){
-        $users = User::all();
+        $users = User::where('level', '!=', 'Member')->get();
         return view('adminpanel.user-management.index', compact('users'));
     }
 

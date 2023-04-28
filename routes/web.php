@@ -24,8 +24,10 @@ Route::get('/', [WebController::class, 'index'])->name('web.welcome');
 Route::get('/daftar-buku', [WebController::class, 'daftarBuku'])->name('web.daftar-buku');
 Route::get('/buku/detail/{id}', [WebController::class, 'detailBuku'])->name('web.buku-detail');
 Route::get('/tentang', [WebController::class, 'tentang'])->name('web.tentang');
-
+//Authentication
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'doLogin'])->name('doLogin');
+Route::post('/logout', [AuthController::class, 'doLogout'])->name('doLogout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/book', [BookController::class, 'index'])->name('book.index');

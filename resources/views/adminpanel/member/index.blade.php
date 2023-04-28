@@ -43,6 +43,7 @@
                                 <form action="{{ route('member.controls') }}" method="post">
                                     @csrf
                                     @method('PUT')
+                                    <input type="hidden" name="memberEmail" value="{{ $member->email }}">
                                     <input type="hidden" name="memberId" value="{{ $member->id }}">
                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Aktif/Nonaktifkan member" onclick="return confirm('Anda yakin?')"><i class="fas fa-info-circle"></i></button>
                                 </form>

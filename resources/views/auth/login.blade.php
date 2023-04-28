@@ -25,10 +25,15 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Silahkan masuk ke akun anda.</p>
-
-      <form action="" method="post">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error')}}
+            </div>
+        @endif
+      <form action="{{ route('doLogin') }}" method="post">
+          @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email or member ID">
+          <input type="email" name="email" class="form-control" placeholder="Email or member ID">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -36,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
