@@ -30,6 +30,7 @@
               </p>
             </a>
           </li>
+            @if(Auth()->user()->level != 'Member')
           <li class="nav-item {{ (request()->is('book') || (request()->is('book/categories')) || (request()->is('book/publishers')) ? 'menu-open' : '') }}">
             <a href="#" class="nav-link {{ (request()->is('book') || (request()->is('book/categories')) || (request()->is('book/publishers')) ? 'bg-info' : '') }}">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -74,6 +75,7 @@
                 </p>
               </a>
             </li>
+            @if(Auth()->user()->level == 'Admin')
             <li class="nav-item {{ (request()->is('user-management')) || (request()->is('user-management/new-user')) ? 'bg-info' : '' }}">
               <a href="{{ route('user-management.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>
@@ -82,6 +84,7 @@
                 </p>
               </a>
             </li>
+                @endif
             <li class="nav-item">
               <a href="../widgets.html" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
@@ -90,6 +93,7 @@
                 </p>
               </a>
             </li>
+            @endif
             @if(Auth()->user()->level == 'Member')
                 <li class="nav-item {{ (request()->is('histories')) ? 'bg-info' : '' }}">
                   <a href="{{ route('my-histories') }}" class="nav-link">
