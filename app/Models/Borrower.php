@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Member;
 use App\Models\Book;
+use App\Models\History;
 class Borrower extends Model
 {
     use HasFactory;

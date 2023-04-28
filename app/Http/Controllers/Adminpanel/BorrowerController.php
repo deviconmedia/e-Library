@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Adminpanel;
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use Illuminate\Http\Request;
 use App\Models\Borrower;
 use App\Models\Member;
@@ -27,8 +28,6 @@ class BorrowerController extends Controller
         $b->date_return = $request->dateReturn;
         $b->return_status = 'Belum Dikembalikan';
         $b->information = $request->keterangan;
-        $b->save();
-
         return redirect()->route('borrower.index')->with('success', 'Added!');
     }
 

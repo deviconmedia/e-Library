@@ -56,7 +56,7 @@
                                                 <form action="{{ route('user-management.pass-change') }}" method="post">
                                                     @csrf
                                                     @method('PUT')
-                                                    <input type="text" name="userId" id="userId" value="{{ $user->id }}">
+                                                    <input type="hidden" name="userId" id="userId" value="{{ $user->id }}">
                                                     <div class="form-group row">
                                                         <label for="etNewPass" class="col-sm-4 col-form-label">Kata Sandi Baru</label>
                                                         <div class="col-sm-8">

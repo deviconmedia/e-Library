@@ -8,6 +8,7 @@ use App\Http\Controllers\Adminpanel\UserController;
 use App\Http\Controllers\Adminpanel\BookController;
 use App\Http\Controllers\Adminpanel\MemberController;
 use App\Http\Controllers\Adminpanel\BorrowerController;
+use App\Http\Controllers\Adminpanel\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,8 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'doLogin'])->name('doLogin');
 Route::post('/logout', [AuthController::class, 'doLogout'])->name('doLogout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-Route::get('/book', [BookController::class, 'index'])->name('book.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
+Route::get('/book', [BookController::class, 'index'])->name('book.index')->middleware('auth');
 Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
 Route::post('/book/store', [BookController::class, 'storeBook'])->name('book.store');
 Route::get('/book/show/{id}', [BookController::class, 'showBook'])->name('book.show');
@@ -50,14 +51,14 @@ Route::post('/book/new-publisher', [BookController::class, 'newPublisher'])->nam
 Route::put('/book/publishers', [BookController::class, 'updatePublishers'])->name('book.update-publishers');
 
 //Members routes
-Route::get('members', [MemberController::class, 'index'])->name('member.index');
+Route::get('members', [MemberController::class, 'index'])->name('member.index')->middleware('auth');
 Route::post('members', [MemberController::class, 'newMember'])->name('member.store');
 Route::put('member/update', [MemberController::class, 'updateMemberById'])->name('member.update-by-id');
 Route::put('member/controls', [MemberController::class, 'memberControls'])->name('member.controls');
 Route::delete('member/destroy', [MemberController::class, 'destroyMemberById'])->name('member.destroy-by-id');
 
 //Borrower Routes
-Route::get('borrowers', [BorrowerController::class, 'index'])->name('borrower.index');
+Route::get('borrowers', [BorrowerController::class, 'index'])->name('borrower.index')->middleware('auth');
 Route::post('new-borrower', [BorrowerController::class, 'newBorrower'])->name('borrower.new');
 Route::put('status-borrower', [BorrowerController::class, 'changeStatusBorrower'])->name('borrower.change-status');
 
@@ -68,3 +69,6 @@ Route::post('user-management/new-user', [UserController::class, 'newUserStore'])
 Route::put('user-management/status-change', [UserController::class, 'changeUserStatus'])->name('user-management.status-change');
 Route::put('user-management/pass-change', [UserController::class, 'passUserChange'])->name('user-management.pass-change');
 Route::delete('user-management/delete', [UserController::class, 'deleteUser'])->name('user-management.delete');
+
+// History routes 
+Route::get('histories', [HistoryController::class, 'index'])->name('my-histories');

@@ -19,6 +19,12 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (auth()->attempt($credentials)){
+            //Get user status
+            $u = User::where('email', $request->email)->get();
+            //If user status is inactive
+            if($u[0]['status'] != 'active'){
+                return redirect()->back()->with('error', 'Opps! Your account is inactive please contact administrator to activate!');
+            }
             return redirect()->intended('dashboard');
         }
         return redirect()->back()->with('error', 'Opps! Wrong Email or Password!');
