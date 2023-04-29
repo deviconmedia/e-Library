@@ -46,8 +46,45 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#"><i class="fas fa-history"></i> History</a>
                                     <a class="dropdown-item" href="{{ route('member.controls', $member->id) }}" onclick="return confirm('Anda yakin?')"><i class="fas fa-info-circle"></i> Disable/Enable</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-pen text-warning"></i> Edit</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editModal{{ $member->id }}"><i class="fas fa-pen text-warning"></i> Edit</a>
                                 </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Member #{{ $member->name }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('member.update-by-id') }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="memberId" value="{{ $member->id }}">
+                                                    <div class="form-group row">
+                                                        <label for="etEmail" class="col-sm-2 col-form-label">Email</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" name="etEmail" id="etEmail" class="form-control" placeholder="Email Member" value="{{ $member->email }}" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="name" class="col-sm-2 col-form-label">Nama</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" name="name" id="name" class="form-control" value="{{ $member->name }}" placeholder="Nama Member" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{--                                    End Modal--}}
                             </td>
                         </tr>
                     @endforeach

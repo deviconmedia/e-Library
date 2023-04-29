@@ -35,10 +35,15 @@ class MemberController extends Controller
     }
     //update member by id
     public function updateMemberById(Request $request){
-        $member = Member::find($request->memberId);
-        $member->email = $request->etEmail;
-        $member->name = $request->etName;
-        $member->update();
+        $member = Member::where('id', $request->memberId)->first();
+       if(!empty($u = User::where('email', $member->email)->first())){
+           $u->email = $request->etEmail;
+           $u->name = $request->name;
+           $u->update();
+       }
+       $member->email = $request->etEmail;
+       $member->name = $request->name;
+       $member->update();
         return redirect()->route('member.index')->with('success', 'Updated!');
     }
     //Enable or Disable a member

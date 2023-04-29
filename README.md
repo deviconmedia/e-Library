@@ -24,6 +24,8 @@ Sistem dibangun untuk memudahkan proses management perpustakaan anda secara digi
 
 - 26/04/2023: Rilis perdana & upload source code
 - 28/04/2023: Menambahkan menu History Peminjaman untuk member
+- 29/04/2023: Fixing bugs pada menu members update
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
